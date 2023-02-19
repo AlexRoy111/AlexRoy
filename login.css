@@ -51,14 +51,14 @@ body {
 
 .container button {
 	width: 200px;
-	height: 20px;
-	margin: 20px auto 20px auto;
+	height: 30px;
+	margin: 10px auto 15px auto;
 	border: none;
 	background: linear-gradient(-200deg,#fac0e7,#aac2ee);
 	color: #fff;
 	font-weight: bold;
 	letter-spacing: 8px;
-	border-radius: 10px;
+	border-radius: 5px;
 	cursor: pointer;
     /*动画过渡*/
 	transition: 0.5s;
