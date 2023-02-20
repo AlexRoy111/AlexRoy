@@ -8,137 +8,50 @@
 	<meta name="keyword" content="Blog 博客 Beyond">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="icon" href="Background/logo.ico">
-	<link rel="stylesheet" href="导航栏.css">
 	<link rel="stylesheet" href="about.html">
 	<link rel="stylesheet" type="text/css" href="login.html"/> 
+	<link rel="stylesheet" href="nav.css">
+	<link rel="stylesheet" href="nav.js">
+	<link rel="stylesheet" href="nav.html">
 	<style type="text/css">
-
-		.container .tit{
-  			font-size: 26px;
-  			margin: 65px auto 70px auto;
-		}
-
 		* {
 			margin: 0;
 			padding: 0;
 		}
-		
-		ul {
-			list-style-type: none;
-		}
-		
-		.top {
-			position: fixed;
-			left: 0;
-			right: 0;
-			top: 0;
-			z-index: 999;
-			height: 50px;
-			background: linear-gradient(-45deg, #ecc5b9, #ebb2c8, #aadef1, #85ddc9);
-			animation: gradientBG 5s ease infinite;
-		}
-		.menu {
-			width: 1000px;
-			margin: 0 auto;
-			overflow: hidden;
-		}
-		
-		.logo {
-			float: left;
-			margin-top: 9px;
-		}
-		
-		.nav {
-			float: right;
-			margin-top: 10px;
-			font-size: 500;
-		}
-		
-		.nav li {
-			display: inline-block;
-			margin-left: 50px;
-		}
-		
-		.nav a {
-			display: inline-block;
-			height: 30px;
-			line-height: 30px;
-			font-size: 15px;
-			color: #fff;
-			text-decoration: none;
-		}
-		
-		.nav a:hover {
-			color: #83c3f3;
-		}
 
 		h1 {
-			color: rgb(224, 255, 251);
+			color: rgb(245, 243, 157);
 			font-size: 100px;
-			font-family:'CygnetRound' ;
 		}
-		
-		h2 {
-			color: rgb(255, 255, 255);
-			text-align: center;
-			font-size: 50px;
-			text-decoration: underline;
-		}
-		
-		
-		.login{
-			text-align: center;
-			font-size: 30px;
-		}
-		.container button{
- 		   width: 280px;
-  		  height: 40px;
-  		  margin: 35px auto 40px auto;
-  		  border: none;
-  		  background: linear-gradient(-200deg,#fac0e7,#aac2ee);
-  		  color: #fff;
-  		  font-weight: bold;
-  		  letter-spacing: 8px;
-  		  border-radius: 10px;
- 		   cursor: pointer;
-  		  /*动画过渡*/
-  		  transition: 0.5s;
-		}
-	
+					
 	.home{
 		text-align: center;
 	}
-
-	.span{
-		color: blue;
-	}
 </style>
 </head>
-<body style="background-image:url(Background/background.png); 
-			 background-size:100%;
-			 background-attachment: fixed;">
-
-		<div class="top">
-		<div class="menu">
-			<ul class="nav">
-				<li>
-					<a href="home.html">首页</a>
-				<li>
-					<a href="tools.html">工具分享</a>
-				<li>
-					<a href="FAQ.html">模飞常见问题</a>
-				<li>
-					<a href="about.html">关于</a>
-				<li>
-			</ul>
-		</div>
-	</div>
-</div>
-
+<body style="
+background-image: url(./Background/home.png);
+background-size:cover;
+background-attachment: fixed;">
+<nav class="zj_nav">
+	<ul>
+		<li class="menu">
+			<div class="menu_bar"></div>
+			<div class="menu_bar"></div>
+			<div class="menu_bar"></div>
+		</li>
+		<li class="nav_header">AlexRoy</li>
+		<li><a href="home.html">首页</a></li>
+		<li><a href="tools.html">工具分享</a></li>
+		<li><a href="FAQ.html">模飞常见问题</a></li>
+		<li><a href="about.html">关于</a></li>
+	</ul>
+</nav>
 
 <div class="home">
 <h1 style="margin-top: 300px;">AlexRoy</h1>
-<div style="font-size: 40px;color: rgb(222, 245, 220)" id="text"></div>
+<div style="font-size: 40px;color: rgb(0, 0, 0)" id="text"></div>
+
 		<script>
 			var str = '作者牛牛20CM';
 		    var i = 0;
@@ -153,12 +66,58 @@
 			 }
 			 }
 			typing();
+
+			document.getElementsByClassName("menu")[0].addEventListener("click", function(e) {
+				var eles;
+			if (e.target.tagName === "LI") {
+				eles = e.target.parentNode.children;
+			} else {
+				eles = e.target.parentNode.parentNode.children;
+			}
+				var len = eles.length;
+				for (var i = 2; i < eles.length; i++) {
+				eles[i].classList.toggle("collapse");
+			}
+		});
+
+				var has_subnavs = document.getElementsByClassName("has_subnav");
+				var timer, timer2;
+				for (var i = 0; i < has_subnavs.length; i++) {
+		has_subnavs[i].addEventListener("mouseover", function(e) {
+			if (e.target.tagName === "LI") {
+				// e.target.children[0].style.display = "block";
+				e.target.children[0].classList.toggle("show_block");
+				} else {
+					if (timer) {
+						clearTimeout(timer);
+				}
+					if (timer2) {
+						clearTimeout(timer2);
+				}
+			}
+		});
+		has_subnavs[i].addEventListener("mouseout", function(e) {
+		// console.log("outer_out: "+e.target.tagName);
+		if (e.target.tagName === "LI") {
+			if(e.target.children[0].tagName!=="A"){
+				timer = setTimeout(function() {
+					// e.target.children[0].style.display = "none";
+					e.target.children[0].classList.toggle("show_block");
+				}, 70);
+			}
+		} else if (e.target.tagName === "UL") {
+			e.target.style.display = "none";
+		} else if (e.target.tagName === "A") {
+			timer2 = setTimeout(function() {
+				// e.target.parentNode.parentNode.style.display = "none";
+				e.target.parentNode.parentNode.classList.toggle("show_block");
+			}, 70);
+		}
+	});
+}
  		</script>
 	</div>
 </div>
-
-
-
 
 
 
