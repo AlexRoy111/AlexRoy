@@ -8,11 +8,7 @@
 	<meta name="keyword" content="Blog 博客 Beyond">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="icon" href="Background/logo.ico">
-	<link rel="stylesheet" href="about.html">
-	<link rel="stylesheet" type="text/css" href="login.html"/> 
 	<link rel="stylesheet" href="nav.css">
-	<link rel="stylesheet" href="nav.js">
-	<link rel="stylesheet" href="nav.html">
 	<style type="text/css">
 		* {
 			margin: 0;
@@ -33,6 +29,7 @@
 background-image: url(./Background/home.png);
 background-size:cover;
 background-attachment: fixed;">
+
 <nav class="zj_nav">
 	<ul>
 		<li class="menu">
@@ -52,70 +49,70 @@ background-attachment: fixed;">
 <h1 style="margin-top: 300px;">AlexRoy</h1>
 <div style="font-size: 40px;color: rgb(0, 0, 0)" id="text"></div>
 
-		<script>
-			var str = '作者牛牛20CM';
-		    var i = 0;
-			function typing(){
-			var divTyping = document.getElementById('text');
-			  if (i <= str.length) {
-				divTyping.innerHTML = str.slice(0, i++) + '_';
-			 setTimeout('typing()', 200);
-			 }
-			  else{
-			  	divTyping.innerHTML = str;
-			 }
-			 }
-			typing();
+<script>
+	var str = '作者牛牛20CM';
+	var i = 0;
+	function typing(){
+	var divTyping = document.getElementById('text');
+	  if (i <= str.length) {
+		divTyping.innerHTML = str.slice(0, i++) + '_';
+	 setTimeout('typing()', 200);
+	 }
+	  else{
+		  divTyping.innerHTML = str;
+	 }
+	 }
+	typing();
 
-			document.getElementsByClassName("menu")[0].addEventListener("click", function(e) {
-				var eles;
-			if (e.target.tagName === "LI") {
-				eles = e.target.parentNode.children;
-			} else {
-				eles = e.target.parentNode.parentNode.children;
-			}
-				var len = eles.length;
-				for (var i = 2; i < eles.length; i++) {
-				eles[i].classList.toggle("collapse");
-			}
-		});
+	document.getElementsByClassName("menu")[0].addEventListener("click", function(e) {
+		var eles;
+	if (e.target.tagName === "LI") {
+		eles = e.target.parentNode.children;
+	} else {
+		eles = e.target.parentNode.parentNode.children;
+	}
+		var len = eles.length;
+		for (var i = 2; i < eles.length; i++) {
+		eles[i].classList.toggle("collapse");
+	}
+});
 
-				var has_subnavs = document.getElementsByClassName("has_subnav");
-				var timer, timer2;
-				for (var i = 0; i < has_subnavs.length; i++) {
-		has_subnavs[i].addEventListener("mouseover", function(e) {
-			if (e.target.tagName === "LI") {
-				// e.target.children[0].style.display = "block";
-				e.target.children[0].classList.toggle("show_block");
-				} else {
-					if (timer) {
-						clearTimeout(timer);
-				}
-					if (timer2) {
-						clearTimeout(timer2);
-				}
-			}
-		});
-		has_subnavs[i].addEventListener("mouseout", function(e) {
-		// console.log("outer_out: "+e.target.tagName);
-		if (e.target.tagName === "LI") {
-			if(e.target.children[0].tagName!=="A"){
-				timer = setTimeout(function() {
-					// e.target.children[0].style.display = "none";
-					e.target.children[0].classList.toggle("show_block");
-				}, 70);
-			}
-		} else if (e.target.tagName === "UL") {
-			e.target.style.display = "none";
-		} else if (e.target.tagName === "A") {
-			timer2 = setTimeout(function() {
-				// e.target.parentNode.parentNode.style.display = "none";
-				e.target.parentNode.parentNode.classList.toggle("show_block");
-			}, 70);
+		var has_subnavs = document.getElementsByClassName("has_subnav");
+		var timer, timer2;
+		for (var i = 0; i < has_subnavs.length; i++) {
+has_subnavs[i].addEventListener("mouseover", function(e) {
+	if (e.target.tagName === "LI") {
+		// e.target.children[0].style.display = "block";
+		e.target.children[0].classList.toggle("show_block");
+		} else {
+			if (timer) {
+				clearTimeout(timer);
 		}
-	});
+			if (timer2) {
+				clearTimeout(timer2);
+		}
+	}
+});
+has_subnavs[i].addEventListener("mouseout", function(e) {
+// console.log("outer_out: "+e.target.tagName);
+if (e.target.tagName === "LI") {
+	if(e.target.children[0].tagName!=="A"){
+		timer = setTimeout(function() {
+			// e.target.children[0].style.display = "none";
+			e.target.children[0].classList.toggle("show_block");
+		}, 70);
+	}
+} else if (e.target.tagName === "UL") {
+	e.target.style.display = "none";
+} else if (e.target.tagName === "A") {
+	timer2 = setTimeout(function() {
+		// e.target.parentNode.parentNode.style.display = "none";
+		e.target.parentNode.parentNode.classList.toggle("show_block");
+	}, 70);
 }
- 		</script>
+});
+}
+ </script>
 	</div>
 </div>
 

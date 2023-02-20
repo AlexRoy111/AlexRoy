@@ -10,10 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="icon" href="Background/logo.ico">
 	<link rel="stylesheet" href="nav.css">
-	<link rel="stylesheet" href="nav.html">
-	<link rel="stylesheet" href="about.html">
-	<link rel="stylesheet" type="text/css" href="login.html"/>  
-	<style type="text/css">
+ 	<style type="text/css">
 		* {
 			margin: 0;
 			padding: 0;
@@ -102,7 +99,56 @@
 	</div>
 </div>		
 		
-		
+<script>
+	document.getElementsByClassName("menu")[0].addEventListener("click", function(e) {
+		var eles;
+	if (e.target.tagName === "LI") {
+		eles = e.target.parentNode.children;
+	} else {
+		eles = e.target.parentNode.parentNode.children;
+	}
+		var len = eles.length;
+		for (var i = 2; i < eles.length; i++) {
+		eles[i].classList.toggle("collapse");
+	}
+});
+
+		var has_subnavs = document.getElementsByClassName("has_subnav");
+		var timer, timer2;
+		for (var i = 0; i < has_subnavs.length; i++) {
+has_subnavs[i].addEventListener("mouseover", function(e) {
+	if (e.target.tagName === "LI") {
+		// e.target.children[0].style.display = "block";
+		e.target.children[0].classList.toggle("show_block");
+		} else {
+			if (timer) {
+				clearTimeout(timer);
+		}
+			if (timer2) {
+				clearTimeout(timer2);
+		}
+	}
+});
+has_subnavs[i].addEventListener("mouseout", function(e) {
+// console.log("outer_out: "+e.target.tagName);
+if (e.target.tagName === "LI") {
+	if(e.target.children[0].tagName!=="A"){
+		timer = setTimeout(function() {
+			// e.target.children[0].style.display = "none";
+			e.target.children[0].classList.toggle("show_block");
+		}, 70);
+	}
+} else if (e.target.tagName === "UL") {
+	e.target.style.display = "none";
+} else if (e.target.tagName === "A") {
+	timer2 = setTimeout(function() {
+		// e.target.parentNode.parentNode.style.display = "none";
+		e.target.parentNode.parentNode.classList.toggle("show_block");
+	}, 70);
+}
+});
+}
+</script>
 		
 		
 		
